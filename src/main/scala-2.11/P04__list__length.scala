@@ -6,7 +6,7 @@ scala> length(List(1, 1, 2, 3, 5, 8))
 res0: Int = 6
  */
 
-object P04 extends App {
+object P04__list__length extends App {
 
   // Define length method.
   def length[A](ls: List[A]): Int = {

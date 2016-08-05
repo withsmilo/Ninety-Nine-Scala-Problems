@@ -6,7 +6,7 @@ scala> reverse(List(1, 1, 2, 3, 5, 8))
 res0: List[Int] = List(8, 5, 3, 2, 1, 1)
  */
 
-object P05 extends App {
+object P05__list__reverse extends App {
 
   // Define reverse method.
   def reverse[A](ls: List[A]): List[A] = {

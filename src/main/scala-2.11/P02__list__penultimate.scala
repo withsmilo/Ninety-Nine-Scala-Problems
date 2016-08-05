@@ -6,7 +6,7 @@ scala> penultimate(List(1, 1, 2, 3, 5, 8))
 res0: Int = 5
  */
 
-object P02 extends App {
+object P02__list__penultimate extends App {
 
   // Define penultimate method.
   def penultimate[A](ls: List[A]): A = {

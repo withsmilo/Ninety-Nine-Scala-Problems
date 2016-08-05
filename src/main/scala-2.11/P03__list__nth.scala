@@ -8,7 +8,7 @@ scala> nth(2, List(1, 1, 2, 3, 5, 8))
 res0: Int = 2
  */
 
-object P03 extends App {
+object P03__list__nth extends App {
 
   // Define nth method.
   def nth[A](kth: Int, ls: List[A]): A = {
