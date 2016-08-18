@@ -6,6 +6,8 @@ scala> reverse(List(1, 1, 2, 3, 5, 8))
 res0: List[Int] = List(8, 5, 3, 2, 1, 1)
  */
 
+import scala.annotation.tailrec
+
 object P05__list__reverse extends App {
 
   // Define reverse method.
@@ -18,7 +20,7 @@ object P05__list__reverse extends App {
 
   // Define reverseByTailCall method.
   def reverseByTailCall[A](ls: List[A]): List[A] = {
-    def reverseR[B](curLs: List[B], resLs: List[B]): List[B] = {
+    @tailrec def reverseR[B](curLs: List[B], resLs: List[B]): List[B] = {
       curLs match {
         case item :: remainder => reverseR(remainder, item :: resLs)
         case Nil => resLs
