@@ -6,10 +6,12 @@ scala> penultimate(List(1, 1, 2, 3, 5, 8))
 res0: Int = 5
  */
 
+import scala.annotation.tailrec
+
 object P02__list__penultimate extends App {
 
   // Define penultimate method.
-  def penultimate[A](ls: List[A]): A = {
+  @tailrec def penultimate[A](ls: List[A]): A = {
     ls match {
       case item :: _ :: Nil => item // penultimate element is found!
       case _ :: remainder => penultimate(remainder)
