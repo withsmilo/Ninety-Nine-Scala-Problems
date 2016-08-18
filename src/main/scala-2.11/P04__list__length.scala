@@ -1,3 +1,4 @@
+import scala.annotation.tailrec
 
 /*
 P04 (*) Find the number of elements of a list.
@@ -23,7 +24,7 @@ object P04__list__length extends App {
   // - The Scala compiler can optimise self calls in final methods and in local functions.
   // - In this case, `lengthR` is a local function, so it should be properly optimized.
   def lengthByTailCall[A](ls: List[A]): Int = {
-    def lengthR[B](curLs: List[B], result: Int): Int = {
+    @tailrec def lengthR[B](curLs: List[B], result: Int): Int = {
       curLs match {
         case Nil => result
         case _ :: remainder => lengthR(remainder, result + 1)
