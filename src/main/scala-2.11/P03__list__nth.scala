@@ -8,10 +8,12 @@ scala> nth(2, List(1, 1, 2, 3, 5, 8))
 res0: Int = 2
  */
 
+import scala.annotation.tailrec
+
 object P03__list__nth extends App {
 
   // Define nth method.
-  def nth[A](kth: Int, ls: List[A]): A = {
+  @tailrec def nth[A](kth: Int, ls: List[A]): A = {
     (kth, ls) match {
       case (0, item :: _ ) => item
       case (i, _ :: remainder) => nth(i - 1, remainder)
