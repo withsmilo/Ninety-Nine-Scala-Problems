@@ -11,6 +11,11 @@ res0: List[Symbol] = List('a, 'b, 'c, 'a, 'd, 'e)
 
 object P08__list__compress extends App {
 
+  def test(idx: Int, fn: List[Any] => List[Any]) {
+    val l = List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e)
+    println(s"[#$idx] Input:$l, compress(List) result:" + fn(l))
+  }
+
   // Define compress method.
   def compress[A](ls: List[A]): List[A] = {
     ls.foldLeft(
@@ -22,11 +27,7 @@ object P08__list__compress extends App {
           else m
     }
   }
-
-  // Test it.
-  val testList = List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e)
-  println("test list: " + testList)
-  println("compressed list: " + compress(testList))
+  test(1, compress)
   /*
   test list: List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e)
     [foldLeft] m[List()] n['a]
