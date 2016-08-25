@@ -10,6 +10,11 @@ import scala.annotation.tailrec
 
 object P02__list__penultimate extends App {
 
+  def test(idx: Int, fn: List[Int] => Int): Unit = {
+    val l = List(1, 1, 2, 3, 5, 8)
+    println(s"[#$idx] Input:$l, penultimate(List) result:" + fn(l))
+  }
+
   // Define penultimate method.
   @tailrec def penultimate[A](ls: List[A]): A = {
     ls match {
@@ -18,13 +23,5 @@ object P02__list__penultimate extends App {
       case _ => throw new NoSuchElementException
     }
   }
-
-  // Test it.
-  val testList = List(1, 1, 2, 3, 5, 8)
-  println("test list: " + testList)
-  println("penultimate element: " + penultimate(testList))
-  /*
-  test list: List(1, 1, 2, 3, 5, 8)
-  penultimate element: 5
-   */
+  test(1, penultimate)
 }
