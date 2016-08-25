@@ -12,6 +12,11 @@ res0: List[(Int, Symbol)] = List((4,'a), (1,'b), (2,'c), (2,'a), (1,'d), (4,'e))
 
 object P10__list__encode {
 
+  def test(idx: Int, fn: List[Any] => List[(Int, Any)]) {
+    val l = List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e)
+    println(s"[#$idx] Input:$l, encode(List) result:" + fn(l))
+  }
+
   // Define encode method.
   def encode[A](ls: List[A]) : List[(Int, A)] = {
     import P09__list__pack.pack
@@ -20,9 +25,7 @@ object P10__list__encode {
 
   // Test it.
   def main(p: Array[String]): Unit = {
-    val testList = List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e)
-    println("test list: " + testList)
-    println("encoded list: " + encode(testList))
+    test(1, encode)
     /*
     test list: List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e)
     encoded list: List((4,'a), (1,'b), (2,'c), (2,'a), (1,'d), (4,'e))
