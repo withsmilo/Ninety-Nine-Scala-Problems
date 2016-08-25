@@ -10,15 +10,21 @@ import scala.annotation.tailrec
 
 object P05__list__reverse extends App {
 
-  // Define reverse method.
+  def test(idx: Int, fn: List[Int] => List[Int]) {
+    val l = List(1, 1, 2, 3, 5, 8)
+    println(s"[#$idx] Input:$l, reverse(List) result:" + fn(l))
+  }
+
+  // #1 Use recursive method
   def reverse[A](ls: List[A]): List[A] = {
     ls match {
       case item :: remainder => reverse(remainder) ::: List(item)
       case Nil => Nil
     }
   }
+  test(1, reverse)
 
-  // Define reverseByTailCall method.
+  // #2 Use recursive tailCall method
   def reverseByTailCall[A](ls: List[A]): List[A] = {
     @tailrec def reverseR[B](curLs: List[B], resLs: List[B]): List[B] = {
       curLs match {
@@ -28,15 +34,11 @@ object P05__list__reverse extends App {
     }
     reverseR(ls, Nil)
   }
+  test(2, reverseByTailCall)
 
-  // Test it.
-  val testList = List(1, 1, 2, 3, 5, 8)
-  println("test list: " + testList)
-  println("reverse list using reverse method: " + reverse(testList))
-  println("reverse list using reverseByTailCall method: " + reverseByTailCall(testList))
-  /*
-  test list: List(1, 1, 2, 3, 5, 8)
-  reverse list using reverse method: List(8, 5, 3, 2, 1, 1)
-  reverse list using reverseByTailCall method: List(8, 5, 3, 2, 1, 1)
-   */
+  // #3 Use 'foldLeft' method
+  def reverse3[A](ls: List[A]): List[A] = {
+    (List[A]() /: ls)((x, y) => y :: x)
+  }
+  test(3, reverse3)
 }
