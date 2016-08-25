@@ -8,6 +8,11 @@ res0: List[Any] = List(1, 1, 2, 3, 5, 8)
 
 object P07__list__flatten extends App {
 
+  def test(idx: Int, fn: List[Any] => List[Any]) {
+    val l = List(List(1, 1), 2, List(3, List(5, 8)))
+    println(s"[#$idx] Input:$l, flatten(List) result:" + fn(l))
+  }
+
   // Define flatten method.
   def flatten(ls: List[Any]): List[Any] = {
     ls.flatMap {
@@ -17,16 +22,5 @@ object P07__list__flatten extends App {
       case item => List(item)
     }
   }
-
-  // Test it.
-  val testList = List(List(1, 1), 2, List(3, List(5, 8)))
-  println("test list: " + testList)
-  println("flatten list: " + flatten(testList))
-  /*
-  test list: List(List(1, 1), 2, List(3, List(5, 8)))
-    [flatMap] Call flatten(List(1, 1))
-    [flatMap] Call flatten(List(3, List(5, 8)))
-    [flatMap] Call flatten(List(5, 8))
-  flatten list: List(1, 1, 2, 3, 5, 8)
-   */
+  test(1, flatten)
 }
