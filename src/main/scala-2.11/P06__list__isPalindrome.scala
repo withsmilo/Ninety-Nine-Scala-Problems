@@ -10,7 +10,14 @@ import scala.annotation.tailrec
 
 object P06__list__isPalindrome extends App {
 
-  // Define isPalindrome method.
+  def test(idx: Int, fn: List[Int] => Boolean) {
+    val l1 = List(1, 2, 3, 2, 1)
+    val l2 = List(1, 2, 3, 2, 1, 5)
+    println(s"[#$idx] Input:$l1, isPalindrome(List) result:" + fn(l1))
+    println(s"[#$idx] Input:$l2, isPalindrome(List) result:" + fn(l2))
+  }
+
+  // #1 Use recursive method
   @tailrec def isPalindrome[A](ls: List[A]) : Boolean = {
     ls match {
       case Nil => true
@@ -18,18 +25,5 @@ object P06__list__isPalindrome extends App {
       case all => (all.head == all.last) && isPalindrome(all.tail.init)
     }
   }
-
-  // Test it.
-  val testList1 = List(1, 2, 3, 2, 1)
-  val testList2 = List(1, 2, 3, 2, 1, 5)
-  println("test list: " + testList1)
-  println("is palindrome?: " + isPalindrome(testList1))
-  println("test list: " + testList2)
-  println("is palindrome?: " + isPalindrome(testList2))
-  /*
-  test list: List(1, 2, 3, 2, 1)
-  is palindrome?: true
-  test list: List(1, 2, 3, 2, 1, 5)
-  is palindrome?: false
-   */
+  test(1, isPalindrome)
 }
