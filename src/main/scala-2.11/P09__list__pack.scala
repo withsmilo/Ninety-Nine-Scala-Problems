@@ -10,6 +10,11 @@ res0: List[List[Symbol]] = List(List('a, 'a, 'a, 'a), List('b), List('c, 'c), Li
 
 object P09__list__pack {
 
+  def test(idx: Int, fn: List[Any] => List[List[Any]]) {
+    val l = List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e)
+    println(s"[#$idx] Input:$l, pack(List) result:" + fn(l))
+  }
+
   // Define pack method.
   def pack[A](ls: List[A]): List[List[A]] = {
     if (ls.isEmpty) {
@@ -26,9 +31,7 @@ object P09__list__pack {
 
   // Test it.
   def main(p: Array[String]): Unit = {
-    val testList = List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e)
-    println("test list: " + testList)
-    println("packed list: " + pack(testList))
+    test(1, pack)
     /*
     test list: List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e)
       [span] prefix[List('a, 'a, 'a, 'a)], suffix[List('b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e)]
