@@ -9,15 +9,21 @@ res0: Int = 6
 
 object P04__list__length extends App {
 
-  // Define length method.
+  def test(idx: Int, fn: List[Int] => Int) {
+    val l = List(1, 1, 2, 3, 5, 8)
+    println(s"[#$idx] Input:$l, length(List) result:" + fn(l))
+  }
+
+  // #1 Use recursive method
   def length[A](ls: List[A]): Int = {
     ls match {
       case Nil => 0
       case _ :: remainder => length(remainder) + 1
     }
   }
+  test(1, length)
 
-  // Define lengthByTailCall method.
+  // #2 Use recursive tailCall method
   //
   // TailCall on Scala
   // - http://blog.richdougherty.com/2009/04/tail-calls-tailrec-and-trampolines.html
@@ -32,15 +38,5 @@ object P04__list__length extends App {
     }
     lengthR(ls, 0)
   }
-
-  // Test it.
-  val testList = List(1, 1, 2, 3, 5, 8)
-  println("test list: " + testList)
-  println("list length using length method: " + length(testList))
-  println("list length using lengthUsingTailCall method: " + lengthByTailCall(testList))
-  /*
-  test list: List(1, 1, 2, 3, 5, 8)
-  list length using length method: 6
-  list length using lengthUsingTailCall method: 6
-   */
+  test(2, lengthByTailCall)
 }
