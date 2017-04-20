@@ -1,3 +1,4 @@
+import scala.annotation.tailrec
 
 /*
 P03 (*) Find the Kth element of a list.
@@ -7,8 +8,6 @@ Example:
 scala> nth(2, List(1, 1, 2, 3, 5, 8))
 res0: Int = 2
  */
-
-import scala.annotation.tailrec
 
 object P03__list__nth extends App {
 

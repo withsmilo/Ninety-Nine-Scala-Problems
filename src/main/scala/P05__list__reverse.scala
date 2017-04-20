@@ -1,3 +1,4 @@
+import scala.annotation.tailrec
 
 /*
 P05 (*) Reverse a list.
@@ -5,8 +6,6 @@ Example:
 scala> reverse(List(1, 1, 2, 3, 5, 8))
 res0: List[Int] = List(8, 5, 3, 2, 1, 1)
  */
-
-import scala.annotation.tailrec
 
 object P05__list__reverse extends App {
 

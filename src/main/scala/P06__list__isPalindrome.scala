@@ -1,3 +1,4 @@
+import scala.annotation.tailrec
 
 /*
 P06 (*) Find out whether a list is a palindrome.
@@ -5,8 +6,6 @@ Example:
 scala> isPalindrome(List(1, 2, 3, 2, 1))
 res0: Boolean = true
  */
-
-import scala.annotation.tailrec
 
 object P06__list__isPalindrome extends App {
 

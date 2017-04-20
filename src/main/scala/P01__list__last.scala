@@ -1,3 +1,4 @@
+import scala.annotation.tailrec
 
 /*
 P01 (*) Find the last element of a list.
@@ -5,8 +6,6 @@ Example:
 scala> last(List(1, 1, 2, 3, 5, 8))
 res0: Int = 8
  */
-
-import scala.annotation.tailrec
 
 object P01__list__last extends App {
 
